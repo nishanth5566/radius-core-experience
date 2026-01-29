@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import Logo from "@/components/Logo";
 import MapEntity from "@/components/MapEntity";
 import GlassCard from "@/components/GlassCard";
@@ -55,6 +56,14 @@ const entities = [
 
 const MapView = () => {
   const [radiusSize, setRadiusSize] = useState(1);
+  const { toast } = useToast();
+
+  const handleStartExploring = () => {
+    toast({
+      title: "Exploring nearby",
+      description: `Finding people within ${radiusSize.toFixed(1)} miles of you...`,
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
@@ -227,6 +236,7 @@ const MapView = () => {
         
         <motion.button
           className="btn-aurora w-full py-4 text-lg font-semibold text-primary-foreground"
+          onClick={handleStartExploring}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
