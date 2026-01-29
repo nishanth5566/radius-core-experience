@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import Logo from "@/components/Logo";
 import MapEntity from "@/components/MapEntity";
@@ -56,6 +57,7 @@ const entities = [
 
 const MapView = () => {
   const [radiusSize, setRadiusSize] = useState(1);
+  const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleStartExploring = () => {
@@ -100,6 +102,7 @@ const MapView = () => {
         <Logo size="sm" />
         <motion.button
           className="glass-card px-4 py-2 rounded-full text-sm font-medium text-muted-foreground hover:text-foreground"
+          onClick={() => navigate("/discover")}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
