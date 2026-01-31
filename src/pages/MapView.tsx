@@ -5,6 +5,8 @@ import { useToast } from "@/hooks/use-toast";
 import Logo from "@/components/Logo";
 import MapEntity from "@/components/MapEntity";
 import GlassCard from "@/components/GlassCard";
+import BottomTabBar from "@/components/BottomTabBar";
+import AuroraBackground from "@/components/AuroraBackground";
 
 // Mock data for map entities
 const entities = [
@@ -68,7 +70,8 @@ const MapView = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
+    <div className="min-h-screen flex flex-col relative overflow-hidden pb-28">
+      <AuroraBackground />
       {/* Ambient glow effects */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -246,6 +249,8 @@ const MapView = () => {
           Start Exploring
         </motion.button>
       </motion.div>
+      
+      <BottomTabBar />
     </div>
   );
 };
